@@ -1,23 +1,13 @@
 package Fila
 fun main() {
     var fila: Enfileiravel = FilaEstatica()
-    fila.enfileirar("A");
-    println("Frente: ${fila.frente()}")
-    fila.enfileirar("B")
-    fila.enfileirar("C")
-    fila.enfileirar("D")
-    fila.desenfileirar()
-    fila.enfileirar("E")
-    val conteudo = fila.desenfileirar()
-    fila.enfileirar("F")
-    println("Frente: ${fila.frente()}")
-    println("Frente: ${fila.frente()}")
-    fila.enfileirar("G");
-    fila.enfileirar(conteudo)
-    fila.enfileirar("I")
-    fila.enfileirar("J")
-    fila.enfileirar("K")
-    println("Fila=${fila.imprimir()}")
+    fila.enfileirar("Joao")
+   // fila.enfileirar("Lucas")
+   fila.enfileirar("Flamengo")
+    println(fila.frente())  // joao
+    println(fila.estaCheia()) // false
+   // println(  fila.desenfileirar()) // joao
+    println(fila.imprimir()) // lucas, flamengo
 
 
 }
