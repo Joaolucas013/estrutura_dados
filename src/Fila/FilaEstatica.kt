@@ -10,7 +10,7 @@ class FilaEstatica(private val tamanho: Int = 10) : Enfileiravel {
         if (!estaVazia())
             dados[ponteiroInicio] = dado
         else
-            println("Queue is empty!")
+            println("Fila esta vazia!")
     }
 
     override fun enfileirar(dado: Any?) {
@@ -18,7 +18,7 @@ class FilaEstatica(private val tamanho: Int = 10) : Enfileiravel {
             ponteiroFim++
             dados[ponteiroFim] = dado
         } else {
-            println("Queue is full!")
+            println("Fila esta vazia!")
         }
     }
 
@@ -28,7 +28,7 @@ class FilaEstatica(private val tamanho: Int = 10) : Enfileiravel {
             dadoInicio = dados[ponteiroInicio]
             ponteiroInicio++
         } else {
-            println("Queue is empty!")
+            println("Fila esta vazia!")
         }
         return dadoInicio
     }
@@ -38,7 +38,7 @@ class FilaEstatica(private val tamanho: Int = 10) : Enfileiravel {
         if (!estaVazia()) {
             dadoInicio = dados[ponteiroInicio]
         } else {
-            println("Queue is empty!")
+            println("Fila esta vazia!")
         }
         return dadoInicio
     }
