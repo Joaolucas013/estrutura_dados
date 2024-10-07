@@ -2,21 +2,16 @@ package Pilha
 
 fun main(args: Array<String>) {
         var pilha: Empilhavel = PilhaEstatica(100)
-        pilha.empilhar("Instituto")
-        pilha.empilhar("Federal")
-        println("Topo: ${pilha.espiar()}")
-        pilha.empilhar("de")
-        pilha.empilhar("Educação")
-        pilha.empilhar("Ciência")
-        pilha.empilhar("e")
-        println("Topo: ${pilha.espiar()}")
-        val conteudo = pilha.desempilhar()
-        pilha.desempilhar()
-        pilha.empilhar("Tecnologia")
-        pilha.empilhar("da")
-        pilha.empilhar("bahia")
-        pilha.atualizar("Bahia")
-        pilha.empilhar(pilha.desempilhar())
-        pilha.empilhar(conteudo)
-        println("Pilha=${pilha.imprimir()}")
+          pilha.empilhar("Joao")
+    pilha.empilhar("Lucas")
+    pilha.empilhar("da")
+    pilha.empilhar("Silva")
+    pilha.empilhar("Correia")
+    pilha.empilhar("Flamengo")
+    pilha.empilhar("Palmeiras não tem mundial")
+    println(pilha.espiar()) // palmeiras..
+     pilha.desempilhar() // palmeiras
+    println(pilha.espiar()) // flamengo
+     println(  pilha.estaVazia())
+    println(pilha.estaCheia())
 }
