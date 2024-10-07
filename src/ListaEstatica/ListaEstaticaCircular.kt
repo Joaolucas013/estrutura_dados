@@ -135,6 +135,18 @@ class ListaEstaticaCircular: Listavel {
         }
         return "$resultado]"
     }
+    //  var resultado = "["
+    //     var ponteiroAux = ponteiroInicio
+    //     for (i in 0 until quantidade) {
+    //         resultado += "${dados[(ponteiroAux + i) % dados.size]}"
+
+    //         // Adiciona vírgula apenas entre os elementos, exceto no último
+    //         if (i < quantidade - 1) {
+    //             resultado += ","
+    //         }
+    //     }
+    //     return "$resultado]"
+    // }
 
 
 
