@@ -26,7 +26,7 @@ class ListaEstaticaCircular: Listavel {
                 ponteiroFim = (ponteiroFim+1)%dados.size
                 quantidade++
             } else {
-                println("List is full")
+                println("Lista esta cheia")
             }
         } else{
             println("posicao inválida")
