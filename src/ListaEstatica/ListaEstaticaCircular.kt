@@ -41,7 +41,7 @@ class ListaEstaticaCircular: Listavel {
             dados[ponteiroFim] = dado
             quantidade++
         } else {
-            println("list is full")
+            println("Lista esta cheia")
         }
     }
 
