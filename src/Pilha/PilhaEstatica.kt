@@ -16,7 +16,7 @@ class PilhaEstatica : Empilhavel {
             if (!estaVazia())
                 dados[ponteiroTopo] = dado
             else
-                println("Stack is empty!")
+                println("Pilha está vazia!")
         }
 
         override fun empilhar(dado: Any?) {
@@ -24,7 +24,7 @@ class PilhaEstatica : Empilhavel {
                 ponteiroTopo++
                 dados[ponteiroTopo] = dado
             } else {
-                println("Stack is full!")
+                println("Pilha está cheia!")
             }
         }
 
@@ -34,7 +34,7 @@ class PilhaEstatica : Empilhavel {
                 dadoTopo = dados[ponteiroTopo]
                 ponteiroTopo--
             } else {
-                println("Stack is empty!")
+                println("Pilha está vazia")
             }
             return dadoTopo
         }
@@ -44,7 +44,7 @@ class PilhaEstatica : Empilhavel {
             if (!estaVazia()) {
                 dadoTopo = dados[ponteiroTopo]
             } else {
-                println("Stack is empty!")
+                println("Pilha está vazia!")
             }
             return dadoTopo
         }
