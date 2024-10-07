@@ -95,6 +95,7 @@ class ListaEstaticaCircular: Listavel {
                     ponteiroFim = dados.size - 1
                 }
                 quantidade--
+                // ou quantidade = quantidade -1
             } else {
                 println("lista esta vazia")
             }
