@@ -6,10 +6,6 @@ class HeapMin(private val tamanho:Int = 10):Amontoavel {
     private var ponteiroFim: Int = -1
 
 
-  
-    private var dados = LongArray(tamanho) { 0 }
-    private var ponteiroFim: Int = -1
-
 
     override fun inserir(dado: Long) {
         if (!estaCheia()) {
