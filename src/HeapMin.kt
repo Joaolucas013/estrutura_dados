@@ -6,6 +6,22 @@ class HeapMin(private val tamanho:Int = 10):Amontoavel {
     private var ponteiroFim: Int = -1
 
 
+  
+    private var dados = LongArray(tamanho) { 0 }
+    private var ponteiroFim: Int = -1
+
+
+    override fun inserir(dado: Long) {
+        if (!estaCheia()) {
+            ponteiroFim++
+            dados[ponteiroFim] = dado
+            ajustarAcima(ponteiroFim)
+        } else {
+            println("Heap esta cheia!!!")
+        }
+}
+
+
     private fun ajustarAcima(indice: Int) {
         var indiceFilho = indice
         var indicePai = pai(indiceFilho)
@@ -21,35 +37,27 @@ class HeapMin(private val tamanho:Int = 10):Amontoavel {
         }
     }
 
-    private fun ajustarAbaixo(indice:Int){
-        var indicePai = indice
-        var indiceFilhoEsquerda = filhoEsquerda(indicePai)
-        var indiceFilhoDireita = filhoDireita(indicePai)
-
-
-    }
-
-    private fun ajustarAcimaRecursivo(indice: Int) {
-        if (indice > 0) {
-            val indiceFilho = indice
-            val indicePai = pai(indiceFilho)
-            if (dados[indiceFilho] < dados[indicePai]) {
-                troca(indiceFilho, indicePai)
-            }
-            ajustarAcima(indicePai)
+    private fun ajustarAbaixoRec(indice: Int) {
+        val pai = indice
+        val filhoEsquerdo = indiceFilhoEsquerda(pai)
+        val filhoDireito = indiceFilhoDireita(pai)
+        var menor = pai;    // Assume que o pai é o menor inicialmente
+    
+        if (filhoEsquerdo <= ponteiroFim)  // está dentro dos valores válidos do array (ou seja, o nó pai tem filho esquerdo)?
+            if (dados[menor] > dados[filhoEsquerdo])  // filho menor que o pai?
+                menor = filhoEsquerdo
+    
+        if (filhoDireito <= ponteiroFim)  // está dentro dos valores válidos do array (ou seja, o nó pai tem filho direito)?
+            if (dados[menor] > dados[filhoDireito])  // filho menor que o pai?
+                menor = filhoDireito
+                
+        // O menor não é o pai? Realiza a troca e continua ajustando para baixo
+        if (menor != pai) {
+            trocar(pai, menor)
+            ajustarAbaixoRec(menor)
         }
     }
 
-    override fun inserir(dado: Long) {
-        if (!estaCheia()) {
-            ponteiroFim++
-            dados[ponteiroFim] = dado
-            ajustarAcima(ponteiroFim)
-        } else {
-            println("Heap esta cheia!!!")
-        }
-
-    }
 
     override fun obter(): Long? {
         var aux: Long? = null
@@ -61,12 +69,11 @@ class HeapMin(private val tamanho:Int = 10):Amontoavel {
         return aux
     }
 
-    private fun troca(i:Int, j:Int){
-        val temp = dados[i]
-        dados[i] = dados[j]
-        dados[j] = temp
-
-    }
+private fun troca(indice1: Int, indice2: Int) {
+    val temp = dados[indice1]
+    dados[indice1] = dados[indice2]
+    dados[indice2] = temp
+}
 
     override fun atualizar(novoDado: Long) {
         if(!estaVazia()){
@@ -78,7 +85,7 @@ class HeapMin(private val tamanho:Int = 10):Amontoavel {
 
     }
 
-    override fun extrair(): Long? {
+    override fun remover(): Long? {
         var aux: Long? = null
         if (!estaVazia()) {
             aux = dados[0]
@@ -110,15 +117,17 @@ class HeapMin(private val tamanho:Int = 10):Amontoavel {
         return "$resultado]"
 
     }
+
+    
     private fun pai(indiceFilho: Int): Int {
         return (indiceFilho-1)/2
     }
 
-    private fun filhoEsquerda(indicePai: Int): Int {
+    private fun filhoEsquerdo(indicePai: Int): Int {
         return (indicePai * 2 + 1)
     }
 
-    private fun filhoDireita(indicePai: Int): Int {
+    private fun filhoDireito(indicePai: Int): Int {
         return (indicePai * 2 + 2)
     }
 
