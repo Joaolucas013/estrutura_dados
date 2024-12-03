@@ -34,10 +34,10 @@ class ListaDinamicaProva(private val tamanho:Int):ListavelLIstaDinamica{
                 novoNo.anterior = anterior
                 quantidade++
             } else {
-                throw Exception("Posição Inválida!")
+                println("Posição Inválida!")
             }
         } else {
-            throw Exception("Lista Cheia!")
+            println("Lista Cheia!")
         }
     }
     
@@ -67,10 +67,10 @@ class ListaDinamicaProva(private val tamanho:Int):ListavelLIstaDinamica{
                 }
                 quantidade--
             } else {
-                throw Exception("Posição Inválida!")
+                println("Posição Inválida!")
             }
         } else {
-            throw Exception("Lista Vazia!")
+            println("Lista Vazia!")
         }
         return dado
     }
