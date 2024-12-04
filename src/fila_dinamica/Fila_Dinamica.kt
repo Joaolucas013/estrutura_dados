@@ -23,11 +23,11 @@ class Fila_Dinamica(var tamanho:Int = 10):EnfileiravelDinamica {
 
     }
 	override fun desenfileirar(): Any? {
-		var dadoAux: Any? = null
+		var aux: Any? = null
 		if (!estaVazia()) {
 			dadoAux = ponteiroInicio?.dado
 			ponteiroInicio = ponteiroInicio?.proximo
-			quantidade = quantidade.dec()
+			quantidade--
 			if (!estaVazia())
 				ponteiroInicio?.anterior = null
 			else
@@ -35,25 +35,27 @@ class Fila_Dinamica(var tamanho:Int = 10):EnfileiravelDinamica {
 		} else {
 			println("Fila Vazia!")
 		}
-		return dadoAux
+		return aux
 	}
 	
 	override fun frente(): Any? {
-		var dadoAux: Any? = null
-		if (!estaVazia())
+		var aux: Any? = null
+		if (!estaVazia()){
 			dadoAux = ponteiroInicio?.dado
-		else
+		}
+		else{
 			println("Fila Vazia!")
-		
-		return dadoAux
+		}
+		return aux
 	}
 
     override fun atualizar(dado: Any?) {
-		if (!estaVazia())
+		if (!estaVazia()){
 			ponteiroInicio?.dado = dado 
-		else
+		}
+		else{
 			println("Fila Vazia!")
-
+		}
 	}	
 
 	override fun estaCheia(): Boolean {
@@ -66,15 +68,15 @@ class Fila_Dinamica(var tamanho:Int = 10):EnfileiravelDinamica {
 	
 	override fun imprimir(): String {
 		var ponteiroAuxiliar = ponteiroInicio
-		var resultado = "["
+		var saida= "["
 		for (i in 0 until quantidade) {
-			resultado += "${ponteiroAuxiliar?.dado}"
+			saida += "${ponteiroAuxiliar?.dado}"
 			if (i != quantidade-1)
-				resultado += ","
+				saida += ","
 			
 			ponteiroAuxiliar = ponteiroAuxiliar?.proximo
 		}
-		return "$resultado]"
+		return "${saida}]"
 	}
 
 }
