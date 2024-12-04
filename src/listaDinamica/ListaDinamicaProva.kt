@@ -41,40 +41,40 @@ class ListaDinamicaProva(private val tamanho:Int):ListavelLIstaDinamica{
         }
     }
     
-    override fun apagar(posicao: Int): Any? {
-        var dado: Any?
+  override fun apagar(posicao: Int): Any? { // remover B
+        var dadoAux: Any? = null
+        if (!estaVazia()) {
+            if ((posicao >= 0) && (posicao <= quantidade)) {
+                var inicio = ponteiroInicio
 
-        if (!estaVazia()){
-            if ((posicao>=0) && (posicao<=quantidade)){
-                var auxiliar = ponteiroInicio
-                for (i in 0 until posicao){
-                    auxiliar = auxiliar?.proximo
+                for (i in 0 until posicao) {
+                    inicio = inicio?.proximo
                 }
-                dado = auxiliar?.dado
-                var anterior = auxiliar?.anterior
-                val proximo = auxiliar?.proximo
+                dadoAux = inicio?.dado         // A B C   dadoAux = B
+                var ponteiroAnterior = inicio?.anterior   // ponteiroAnterior = A
+                var ponteiroProximo = inicio?.proximo       // ponteiroProximo = C
 
-                if (anterior != null){
-                    anterior.proximo = proximo
+                if (ponteiroAnterior != null) {               // A aponta para C
+                    ponteiroAnterior.proximo = ponteiroProximo
                 } else {
-                    ponteiroInicio = ponteiroInicio?.proximo
+                    ponteiroInicio =
+                        ponteiroInicio?.proximo   // É o primeiro elemento da lista e é movido para o proximo
                 }
-
-                if (proximo != null) {
-                    proximo.anterior = anterior
+                if (ponteiroProximo != null) {
+                    ponteiroProximo.anterior = ponteiroAnterior      // C aponta para A
                 } else {
-                    ponteiroFim = ponteiroFim?.anterior
+                    ponteiroFim = ponteiroFim?.anterior  // é o ultimo elemento da lista e é movido para o anterior
                 }
                 quantidade--
             } else {
-                println("Posição Inválida!")
+                throw Exception("POSICÃO INVÁLIDA!!!")
             }
         } else {
-            println("Lista Vazia!")
+            throw Exception("Lista está vazia!!!")
         }
-        return dado
-    }
 
+        return dadoAux
+    }
     override fun limpar() {
         quantidade=0
         ponteiroFim= null
