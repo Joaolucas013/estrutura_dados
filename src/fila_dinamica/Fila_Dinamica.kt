@@ -8,22 +8,21 @@ class Fila_Dinamica(var tamanho:Int = 10):EnfileiravelDinamica {
 
 
 override fun enfileirar(dado: Any?) {
-		if (!estaCheia()) {
-			var noTemp = NoDuplo(dado)
-			//noTemp.dado = dado
-			noTemp.anterior = ponteiroFim
-			if (!estaVazia())
-				ponteiroFim?.proximo = noTemp
-			else
-				ponteiroInicio = noTemp
-				
-			ponteiroFim = noTemp
-			quantidade = quantidade.inc()
-		} else {
-			println("Fila Cheia!")
-		}
-	}
-	
+        if (!estaCheia()) {
+            var novoNo = NoDuplo(dado)
+            novoNo.anterior = ponteiroFim
+            if (!estaVazia()) {
+                ponteiroFim?.proximo = novoNo
+            } else {
+                ponteiroInicio = novoNo
+            }
+            ponteiroFim = novoNo
+            quantidade--
+        } else {
+            println("Fila Cheia!")
+        }
+    }
+
 	override fun desenfileirar(): Any? {
 		var dadoAux: Any? = null
 		if (!estaVazia()) {
