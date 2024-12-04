@@ -1,6 +1,6 @@
 package heap
 
-<<<<<<< HEAD
+
 class HeapMin(private val tamanho:Int = 10):Amontoavel {
 
     private var dados = LongArray(tamanho) { 0 }
