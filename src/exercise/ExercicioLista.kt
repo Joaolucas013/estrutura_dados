@@ -38,13 +38,13 @@ class ExercicioLista(var tamanho:Int):InterfaceExercicio{
     // exercicio 2
     override fun isPalindrome(palavra: String): Boolean {
         for (caracter in palavra) {
-            this.empilhar(caracter.lowercase()) // algo como NATAN retornaria true, mas NAtan retornaria falso
+            this.empilhar(caracter) 
         }
         var palavraDesempilhada = ""
         while (!estaVazia()) {
             palavraDesempilhada += this.desempilhar()
         }
-        return palavra == palavraDesempilhada
+           return palavra.lowercase() == palavraDesempilhada.lowercase() // // algo como ANA retornaria true, mas ANa retornaria falso
     }
 
     override fun empilhar(dado: Any?) {
