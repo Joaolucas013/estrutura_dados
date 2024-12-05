@@ -47,6 +47,26 @@ class ExercicioLista(var tamanho:Int):InterfaceExercicio{
            return palavra.lowercase() == palavraDesempilhada.lowercase() // // algo como ANA retornaria true, mas ANa retornaria falso
     }
 
+
+//Implemente um método “String decToBin(String data)” que retorne a representação
+//Binária de números Decimais, utilizando Pilha Dinâmica.
+ override fun decToBin(dado: Int):String {
+        var bin = ""
+        var numero = dado
+
+        while (numero>0){
+            var resto = numero%2
+            this.empilhar(resto)
+            numero /= 2
+        }
+
+        while(!estaVazia()){
+            bin += "${this.desempilhar()}"
+        }
+        return bin
+    }
+
+    
     override fun empilhar(dado: Any?) {
         if (!estaCheia()) {
             var novoNo = NoDuplo(dado)
