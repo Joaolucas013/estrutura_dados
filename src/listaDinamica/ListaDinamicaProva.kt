@@ -6,6 +6,22 @@ class ListaDinamicaProva(private val tamanho:Int):ListavelLIstaDinamica{
     var ponteiroFim:NoDuploListaDinamica? = null
     var quantidade:Int= 0
 
+    
+      fun inserirInicio(dado: Any?) { // A B C ----> D A B C
+            if(!estaCheia()){
+                var novoNo = NoDuploListaDinamica(dado)
+                if(!estaVazia()){
+                    ponteiroInicio?.anterior = novoNo
+                } else{
+                    ponteiroFim = novoNo
+                }
+                novoNo.proximo = ponteiroInicio
+                ponteiroInicio = novoNo
+                quantidade++
+            } else{
+                println("Lista está cheia!!!")
+            }
+        }
 
     override fun inserir(posicao: Int, dado: Any?) {
         if (!estaCheia()){
