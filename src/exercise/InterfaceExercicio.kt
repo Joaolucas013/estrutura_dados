@@ -20,7 +20,7 @@ interface InterfaceExercicio {
      fun verificaExistencia(dado:Any?):Boolean
      fun buscarInicio(dado:Any?):Any?
      fun buscarElementoPosicaoLogica(posicao: Int): Any?
-     
+
      fun buscarTodos(): Array<Any?>
      fun atualizarInicio(dado:Any?)
      fun atualizarFim(dado:Any?)
@@ -31,5 +31,5 @@ interface InterfaceExercicio {
     fun estaVazia(): Boolean
     fun estaCheia(): Boolean
     //fun imprimir(): String
-}
+
 }
