@@ -11,7 +11,8 @@ interface InterfaceExercicio {
     fun empilhar(dado: Any?)
     fun desempilhar(): Any?
     fun isPalindrome(palavra: String): Boolean
-
+     fun apagar(posicao:Int):Any?
+     fun apagarTodos()
     ///Fila///
    // fun enfileirar(dado: Any?)
     fun desenfileirarFinal():Any?
@@ -20,16 +21,17 @@ interface InterfaceExercicio {
      fun verificaExistencia(dado:Any?):Boolean
      fun buscarInicio(dado:Any?):Any?
      fun buscarElementoPosicaoLogica(posicao: Int): Any?
-
      fun buscarTodos(): Array<Any?>
      fun atualizarInicio(dado:Any?)
      fun atualizarFim(dado:Any?)
      fun atualizarPosicaoLogica(dado:Any?, posicao: Int)
      fun apagarInicioListaDinamica():Any?
+     fun apagarFimListaDinamica():Any?
+     fun apagarPosicaoLogica(posicao:Int):Any?
+     fun imprimirInicioFim(): String
 
     ////auxiliares/////
     fun estaVazia(): Boolean
     fun estaCheia(): Boolean
     //fun imprimir(): String
-
 }
