@@ -7,8 +7,8 @@ import provaTest.pilhaDinamicaProva.listaProva.NoDuplo
 
 class ExercicioLista(var tamanho:Int):InterfaceExercicio{
 
-    
-   // fila e lista
+  
+    // fila e lista
     var ponteiroInicio:NoDuplo? = null
     var ponteiroFim:NoDuplo? = null
     var quantidade:Int = 0
@@ -84,6 +84,50 @@ class ExercicioLista(var tamanho:Int):InterfaceExercicio{
             bin += "${this.desempilhar()}"
         }
         return bin
+    }
+
+    override fun apagar(posicao: Int): Any? {       // A B C D ----> A B C
+        var aux:Any? = null
+        if (!estaVazia()) {
+            if ((posicao >= 0) && (posicao <= quantidade)) {
+                var inicio = ponteiroInicio
+
+                for (i in 0 until posicao) {
+                    inicio = inicio?.proximo
+                }
+                aux = inicio?.dado         // A B C   dadoAux = B
+                var ponteiroAnterior = inicio?.anterior   // ponteiroAnterior = A
+                var ponteiroProximo = inicio?.proximo       // ponteiroProximo = C
+
+                if (ponteiroAnterior != null) {               // A aponta para C
+                    ponteiroAnterior.proximo = ponteiroProximo
+                } else {
+                    ponteiroInicio = ponteiroInicio?.proximo   // É o primeiro elemento da lista e é movido para o proximo
+                }
+                if (ponteiroProximo != null) {
+                    ponteiroProximo.anterior = ponteiroAnterior      // C aponta para A
+                } else {
+                    ponteiroFim = ponteiroFim?.anterior  // é o ultimo elemento da lista e recebe  o anterior
+                }
+                quantidade--
+            } else {
+                throw Exception("POSICÃO INVÁLIDA!!!")
+            }
+        } else {
+            throw Exception("Lista está vazia!!!")
+        }
+        return aux
+    }
+
+    override fun apagarTodos() {
+        if(!estaVazia()){
+            var inicio = ponteiroInicio
+            while(inicio?.proximo!=null){
+                inicio.dado = null
+                inicio = inicio.proximo
+                quantidade--
+            }
+        }
     }
 
     //0. Inserir um dado no início de uma Lista Dinâmica.
@@ -266,6 +310,70 @@ class ExercicioLista(var tamanho:Int):InterfaceExercicio{
         return aux
     }
 
+    override fun apagarFimListaDinamica(): Any? {
+        var aux:Any? = null
+        if(!estaVazia()){
+            aux = ponteiroFim?.dado
+            ponteiroFim = ponteiroFim?.anterior
+            quantidade--
+            if(!estaVazia()){
+                ponteiroFim?.proximo = null
+            } else{
+                ponteiroInicio = null
+            }
+        }
+        return aux
+    }
+
+    override fun apagarPosicaoLogica(posicao: Int): Any? {  // A B C ---> A C
+            var aux: Any? = null
+            if (!estaVazia()) {
+                if ((posicao >= 0) && (posicao <= quantidade)) {
+                    var inicio = ponteiroInicio
+
+                    for (i in 0 until posicao) {
+                        inicio = inicio?.proximo
+                    }
+                    aux = inicio?.dado         // A B C   dadoAux = B
+                    var ponteiroAnterior = inicio?.anterior   // ponteiroAnterior = A
+                    var ponteiroProximo = inicio?.proximo       // ponteiroProximo = C
+
+                    if (ponteiroAnterior != null) {               // A aponta para C
+                        ponteiroAnterior.proximo = ponteiroProximo
+                    } else {
+                        ponteiroInicio = ponteiroInicio?.proximo   // É o primeiro elemento da lista e é movido para o proximo
+                    }
+                    if (ponteiroProximo != null) {
+                        ponteiroProximo.anterior = ponteiroAnterior      // C aponta para A
+                    } else {
+                        ponteiroFim = ponteiroFim?.anterior  // é o ultimo elemento da lista e recebe  o anterior
+                    }
+                    quantidade--
+                } else {
+                    throw Exception("POSICÃO INVÁLIDA!!!")
+                }
+            } else {
+                throw Exception("Lista está vazia!!!")
+            }
+            return aux
+        }
+
+    override fun imprimirInicioFim(): String {
+        var saida = "["
+        if (!estaVazia()) {
+            var fim = ponteiroFim
+            for (i in 0 until quantidade) {
+                saida += "${fim?.dado}"
+                if (i != quantidade - 1) {
+                    saida += ","
+                }
+                fim = fim?.anterior
+            }
+        } else {
+            println("Lista esta vazia")
+        }
+        return "${saida}]"
+    }
 
     /////////// metodos auxiliares //////////////
     override fun empilhar(dado: Any?) {
@@ -329,13 +437,13 @@ class ExercicioLista(var tamanho:Int):InterfaceExercicio{
 
 //10. Atualizar todos os dados de uma Lista Dinâmica.
 
-//11. Apagar um dado do início de uma Lista Dinâmica.
+//11. Apagar um dado do início de uma Lista Dinâmica.           // feito
 
-//12. Apagar um dado do fim de uma Lista Dinâmica.
+//12. Apagar um dado do fim de uma Lista Dinâmica.     // feito
 
-//13. Apagar um dado uma posição lógica específica de uma Lista Dinâmica.
+//13. Apagar um dado uma posição lógica específica de uma Lista Dinâmica. // feito
 
-//14. Apagar todos os dados de uma Lista Dinâmica.
+//14. Apagar todos os dados de uma Lista Dinâmica. // feito
 
 //15. Ordenar os dados de forma crescente de uma Lista Dinâmica.
 
@@ -343,9 +451,9 @@ class ExercicioLista(var tamanho:Int):InterfaceExercicio{
 
 //17. Inverter os dados de uma Lista Dinâmica.
 
-//18. Imprimir os dados do início ao fim de uma Lista Dinâmica.
+//18. Imprimir os dados do início ao fim de uma Lista Dinâmica.    // feito
 
-//19. Imprimir os dados do fim ao início de uma Lista Dinâmica.
+//19. Imprimir os dados do fim ao início de uma Lista Dinâmica.        // feito
 
 //20. Verificar se um determinado dado existe em uma Lista Dinâmica.           // feito
 
