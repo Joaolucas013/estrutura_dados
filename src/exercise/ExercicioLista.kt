@@ -4,12 +4,11 @@ import listadinamica.ListavelLIstaDinamica
 import provaTest.pilhaDinamicaProva.listaProva.NoDuplo
 
 
-//3. Implemente um método “boolean isPalindrome(String data)” para verificação de
-//palíndromos utilizando Pilha Dinâmica.
 
 class ExercicioLista(var tamanho:Int):InterfaceExercicio{
 
-     // fila e lista
+    
+   // fila e lista
     var ponteiroInicio:NoDuplo? = null
     var ponteiroFim:NoDuplo? = null
     var quantidade:Int = 0
@@ -168,12 +167,12 @@ class ExercicioLista(var tamanho:Int):InterfaceExercicio{
     }
 
     //5. Buscar um dado de uma posição lógica específica em uma Lista Dinâmica.
-    fun buscarElementoPosicaoLogica(posicao: Int): Any? {
+   override fun buscarElementoPosicaoLogica(posicao: Int): Any? {
         var aux: Any? = null
         if (!estaVazia()) {
             if ((posicao >= 0) && (posicao <= quantidade)) {
                 var inicio = ponteiroInicio
-                for (i in 0 until posicao) {
+                for (i in 0 .. posicao) {
                     aux = inicio?.dado
                     inicio = inicio?.proximo
                 }
@@ -185,6 +184,88 @@ class ExercicioLista(var tamanho:Int):InterfaceExercicio{
         }
         return aux
     }
+
+    override fun buscarTodos(): Array<Any?> {
+        var aux: Array<Any?> = arrayOfNulls(quantidade)
+        var inicio = ponteiroInicio
+        if (!estaVazia()) {
+            for (i in 0 until quantidade) {
+                aux[i] = inicio?.dado
+                inicio = inicio?.proximo
+            }
+        } else {
+            println("Lista está vazia!!!")
+        }
+        return aux
+    }
+
+    //7. Atualizar o dado do início de uma Lista Dinâmica.
+    override fun atualizarInicio(dado: Any?) {
+        if(!estaVazia()){
+            ponteiroInicio?.dado = dado
+        } else{
+            println("Lista está vazia!!!")
+        }
+    }
+
+    //8. Atualizar o dado do fim de uma Lista Dinâmica.
+    override fun atualizarFim(dado: Any?) {
+        if (!estaVazia()) {
+            ponteiroFim?.dado = dado
+        } else {
+            println("Lista está vazia!!!")
+        }
+    }
+
+//   9. Atualizar uma posição lógica específica de uma Lista Dinâmica.
+    override fun atualizarPosicaoLogica(dado: Any?, posicao: Int) {
+        if(!estaVazia()){
+            if((posicao>=0) && (posicao<=quantidade)){
+                var ponteiroAnterior:NoDuplo?=null
+                var ponteiroProximo = ponteiroInicio
+                var novoNo = NoDuplo(dado)
+
+                for (i in 0 until posicao){
+                    ponteiroAnterior = ponteiroProximo
+                    ponteiroProximo = ponteiroProximo?.proximo
+                }
+                if(ponteiroAnterior!=null){
+                    ponteiroAnterior.proximo = novoNo
+                } else{
+                    ponteiroInicio = novoNo
+                }
+                if(ponteiroProximo!=null){
+                    ponteiroProximo.anterior = novoNo
+                } else{
+                    ponteiroFim = novoNo
+                }
+
+            } else{
+                println("Posição inválida!!!")
+            }
+        } else{
+            println("Posição inválida!!!")
+        }
+    }
+
+    //11. Apagar um dado do início de uma Lista Dinâmica.
+    override fun apagarInicioListaDinamica(): Any? {
+        var aux:Any? = null
+        if(!estaVazia()){
+             aux = ponteiroInicio?.dado
+            ponteiroInicio = ponteiroInicio?.proximo
+            quantidade--
+            if(!estaVazia()){
+                ponteiroInicio?.anterior = null
+            } else{
+                ponteiroFim = null
+            }
+        } else{
+            println("Lista está vazia!!!")
+        }
+        return aux
+    }
+
 
     /////////// metodos auxiliares //////////////
     override fun empilhar(dado: Any?) {
@@ -236,15 +317,15 @@ class ExercicioLista(var tamanho:Int):InterfaceExercicio{
 
 //4. Buscar um dado do fim de uma Lista Dinâmica.                                 // feito
 
-//5. Buscar um dado de uma posição lógica específica em uma Lista Dinâmica.
+//5. Buscar um dado de uma posição lógica específica em uma Lista Dinâmica.     // feito
 
-//6. Buscar todos os dados de uma Lista Dinâmica.
+//6. Buscar todos os dados de uma Lista Dinâmica.                         // feito
 
-//7. Atualizar o dado do início de uma Lista Dinâmica.
+//7. Atualizar o dado do início de uma Lista Dinâmica.           // feito
 
-//8. Atualizar o dado do fim de uma Lista Dinâmica.
+//8. Atualizar o dado do fim de uma Lista Dinâmica.           // feito
 
-//9. Atualizar uma posição lógica específica de uma Lista Dinâmica.
+//9. Atualizar uma posição lógica específica de uma Lista Dinâmica.    // feito
 
 //10. Atualizar todos os dados de uma Lista Dinâmica.
 
@@ -266,12 +347,10 @@ class ExercicioLista(var tamanho:Int):InterfaceExercicio{
 
 //19. Imprimir os dados do fim ao início de uma Lista Dinâmica.
 
-//20. Verificar se um determinado dado existe em uma Lista Dinâmica.
+//20. Verificar se um determinado dado existe em uma Lista Dinâmica.           // feito
 
 //21. Verificar a posição lógica da primeira ocorrência de um determinado dado em uma Lista Dinâmica.
 
 //22. Verificar a posição lógica da última ocorrência de um determinado dado em uma Lista Dinâmica
 
 
-
-}
