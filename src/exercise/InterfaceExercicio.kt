@@ -2,8 +2,7 @@ package exercicioProva
 
 interface InterfaceExercicio {
 
- 
-    /////Lista//////
+     /////Lista//////
     fun InserirInicio(dado: Any?)
 
 
@@ -29,6 +28,8 @@ interface InterfaceExercicio {
      fun apagarFimListaDinamica():Any?
      fun apagarPosicaoLogica(posicao:Int):Any?
      fun imprimirInicioFim(): String
+     fun inserirSempreInicio(dado: Any?)   // A B C ----> D A B C
+       fun verificarPosicao(dado:Any):Int
 
     ////auxiliares/////
     fun estaVazia(): Boolean
