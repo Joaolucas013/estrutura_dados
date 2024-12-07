@@ -7,7 +7,6 @@ import provaTest.pilhaDinamicaProva.listaProva.NoDuplo
 
 class ExercicioLista(var tamanho:Int):InterfaceExercicio{
 
-  
     // fila e lista
     var ponteiroInicio:NoDuplo? = null
     var ponteiroFim:NoDuplo? = null
@@ -24,7 +23,7 @@ class ExercicioLista(var tamanho:Int):InterfaceExercicio{
             if (!estaVazia()) {
                 ponteiroInicio?.anterior = novoNo
             } else {
-                ponteiroFim= novoNo
+                ponteiroFim = novoNo
             }
             novoNo.proximo = ponteiroInicio
             ponteiroInicio = novoNo
@@ -69,7 +68,6 @@ class ExercicioLista(var tamanho:Int):InterfaceExercicio{
 
 //Implemente um método “String decToBin(String data)” que retorne a representação
 //Binária de números Decimais, utilizando Pilha Dinâmica.
-
     override fun decToBin(dado: Int):String {
         var bin = ""
         var numero = dado
@@ -119,6 +117,7 @@ class ExercicioLista(var tamanho:Int):InterfaceExercicio{
         return aux
     }
 
+
     override fun apagarTodos() {
         if(!estaVazia()){
             var inicio = ponteiroInicio
@@ -131,16 +130,16 @@ class ExercicioLista(var tamanho:Int):InterfaceExercicio{
     }
 
     //0. Inserir um dado no início de uma Lista Dinâmica.
-    fun inserir(dado: Any?) {
+    override fun inserirSempreInicio(dado: Any?) {
         if (!estaCheia()) {
             var novoNo = NoDuplo(dado)
-            novoNo.anterior = ponteiroFim
+            novoNo.proximo = ponteiroInicio
             if (!estaVazia()) {
-                ponteiroFim?.proximo = novoNo
+                ponteiroInicio?.anterior= novoNo
             } else {
-                ponteiroInicio = novoNo
+                ponteiroFim = novoNo
             }
-            ponteiroFim = novoNo
+            ponteiroInicio = novoNo
             quantidade++
         } else {
             println("Fila Cheia!")
@@ -390,6 +389,24 @@ class ExercicioLista(var tamanho:Int):InterfaceExercicio{
         }
     }
 
+    //21. Verificar a posição lógica da primeira ocorrência de um determinado dado em uma Lista Dinâmica.
+    override fun verificarPosicao(dado:Any):Int{
+        var posicao = 0
+        if(!estaVazia()){
+            var aux = ponteiroInicio
+            for (i in 0 until quantidade){
+                if(aux?.dado==dado){
+                    return posicao
+                }
+                aux = aux?.proximo
+                posicao++
+            }
+        } else{
+            println("Lista está vazia!!!")
+        }
+       return posicao
+    }
+
     override fun desempilhar(): Any? {
         var aux: Any? = null
         if (!estaVazia()) {
@@ -414,7 +431,7 @@ class ExercicioLista(var tamanho:Int):InterfaceExercicio{
    override fun estaVazia(): Boolean {
         return quantidade==0
     }
-
+}
     //0. Inserir um dado no início de uma Lista Dinâmica.                           //  feito
 
 //1. Inserir um dado no fim de uma Lista Dinâmica.
@@ -457,8 +474,6 @@ class ExercicioLista(var tamanho:Int):InterfaceExercicio{
 
 //20. Verificar se um determinado dado existe em uma Lista Dinâmica.           // feito
 
-//21. Verificar a posição lógica da primeira ocorrência de um determinado dado em uma Lista Dinâmica.
+//21. Verificar a posição lógica da primeira ocorrência de um determinado dado em uma Lista Dinâmica. // feito
 
 //22. Verificar a posição lógica da última ocorrência de um determinado dado em uma Lista Dinâmica
-
-
