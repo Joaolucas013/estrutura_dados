@@ -129,12 +129,12 @@ class HeapMin(private val tamanho:Int = 10):Amontoavel {
         return (indiceFilho-1)/2
     }
 
-    override fun indiceFilhoEsquerdo(indicePai: Int): Int { // 1  2  3  4  5 filho esquerdo de 1 = 0*2 + 1 filho = 2
-        return (indicePai*2) +1                           // 0  1  2  3  4
+    override fun indiceFilhoEsquerdo(indicePai: Int): Int { // 1  2  3  4  5  filho esquerdo de 1 = 0*2 + 1 filho = 2
+        return (indicePai*2) +1                             // 0  1  2  3  4
     }
 
     override fun indiceFilhoDireito(indicePai: Int): Int { // 1  2  3  4  5 (filho direito de 1 = 0*2 + 2 - filho= 3
-        return (indicePai*2) + 2
+        return (indicePai*2) + 2                           // 0  1  2  3  4
     }
 
 }
