@@ -18,7 +18,7 @@ class HeapMin(private val tamanho:Int = 10):Amontoavel {
         }
     }
 
-    override fun ajustarAcima(indice: Int) {
+     override fun ajustarAcima(indice: Int) {
         var indiceFilho = indice
         var indicePai = pai(indiceFilho)
 
@@ -26,7 +26,7 @@ class HeapMin(private val tamanho:Int = 10):Amontoavel {
             if (dados[indicePai] > dados[indiceFilho]) {
                 troca(indiceFilho, indicePai)
                 indiceFilho = indicePai
-                indiceFilho = pai(indiceFilho)
+                indicePai = pai(indiceFilho)
             } else {
                 break
             }
