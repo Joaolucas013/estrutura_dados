@@ -30,6 +30,7 @@ interface InterfaceExercicio {
      fun imprimirInicioFim(): String
      fun inserirSempreInicio(dado: Any?)   // A B C ----> D A B C
        fun verificarPosicao(dado:Any):Int
+     fun posicaoUltimaOcorrencia(dado: Any?): Int
 
     ////auxiliares/////
     fun estaVazia(): Boolean
