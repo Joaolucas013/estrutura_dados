@@ -117,7 +117,21 @@ class ExercicioLista(var tamanho:Int):InterfaceExercicio{
         return aux
     }
 
+//22. Verificar a posição lógica da última ocorrência de um determinado dado em uma Lista Dinâmica
+    override fun posicaoUltimaOcorrencia(dado: Any?): Int {
+        var inicio = ponteiroInicio
+        var posicaoAtual = -1
+        var posicao = 0
 
+        while (inicio != null) {
+            if (inicio.dado == dado) {
+                posicaoAtual = posicao
+            }
+            inicio = inicio.proximo
+            posicao++
+        }
+        return posicaoAtual
+    }
     override fun apagarTodos() {
         if(!estaVazia()){
             var inicio = ponteiroInicio
