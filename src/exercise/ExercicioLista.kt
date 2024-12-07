@@ -24,7 +24,7 @@ class ExercicioLista(var tamanho:Int):InterfaceExercicio{
             if (!estaVazia()) {
                 ponteiroInicio?.anterior = novoNo
             } else {
-                ponteiroInicio = novoNo
+                ponteiroFIM= novoNo
             }
             novoNo.proximo = ponteiroInicio
             ponteiroInicio = novoNo
