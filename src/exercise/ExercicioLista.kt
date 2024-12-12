@@ -490,4 +490,4 @@ class ExercicioLista(var tamanho:Int):InterfaceExercicio{
 
 //21. Verificar a posição lógica da primeira ocorrência de um determinado dado em uma Lista Dinâmica. // feito
 
-//22. Verificar a posição lógica da última ocorrência de um determinado dado em uma Lista Dinâmica
+//22. Verificar a posição lógica da última ocorrência de um determinado dado em uma Lista Dinâmica // feito
