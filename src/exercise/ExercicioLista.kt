@@ -448,7 +448,7 @@ class ExercicioLista(var tamanho:Int):InterfaceExercicio{
 }
     //0. Inserir um dado no início de uma Lista Dinâmica.                           //  feito
 
-//1. Inserir um dado no fim de uma Lista Dinâmica.
+//1. Inserir um dado no fim de uma Lista Dinâmica.                      // feito
 
 //2. Inserir um dado numa posição lógica específica de uma Lista Dinâmica.         // feito
 
